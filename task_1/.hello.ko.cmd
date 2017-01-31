@@ -1,0 +1,1 @@
+cmd_/home/lolivei/SW/kernel_dev/eudyptula/task_1/hello.ko := ld -r -m elf_i386 -T ./scripts/module-common.lds --build-id  -o /home/lolivei/SW/kernel_dev/eudyptula/task_1/hello.ko /home/lolivei/SW/kernel_dev/eudyptula/task_1/hello.o /home/lolivei/SW/kernel_dev/eudyptula/task_1/hello.mod.o
