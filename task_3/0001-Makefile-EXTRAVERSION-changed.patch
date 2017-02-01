@@ -1,0 +1,27 @@
+From c169aec2281456d6d797b85c58f0d56aba8bfe43 Mon Sep 17 00:00:00 2001
+Message-Id: <c169aec2281456d6d797b85c58f0d56aba8bfe43.1485948411.git.lolivei@synopsys.com>
+From: Luis Oliveira <lolivei@synopsys.com>
+Date: Wed, 1 Feb 2017 11:24:56 +0000
+Subject: [PATCH] Makefile: EXTRAVERSION changed
+
+Signed-off-by: Luis Oliveira <lolivei@synopsys.com>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 96b27a888285..dac8e729452f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ VERSION = 4
+ PATCHLEVEL = 10
+ SUBLEVEL = 0
+-EXTRAVERSION = -rc6
++EXTRAVERSION = -rc6-eudyptula
+ NAME = Fearless Coyote
+ 
+ # *DOCUMENTATION*
+-- 
+2.11.0
+
