@@ -1,4 +1,4 @@
-# eudyptula chalenge
+# Eudyptula Challenge
 
 #Task 1
 This is Task 01 of the Eudyptula Challenge
@@ -155,7 +155,9 @@ responding to this task, so that I can figure out who to attribute it
 to.  And if you forgot (which of course you have not, we've been through
 all of this before), your id is "5c39dda5ea83".
 
-<dev class="class>
+<body>
+<pre class = 'brush: cpp' >
+<code>
 
 coding_style.c
 
@@ -200,4 +202,29 @@ void my_exit( void )
 module_init(my_init);
 module_exit(my_exit);
 
-</div>
+</code>
+</pre>
+</body>
+
+This is Task 05 of the Eudyptula Challenge
+------------------------------------------
+
+Yeah, you survived the coding style mess!  Now, on to some "real"
+things, as I know you are getting bored by these so far.
+
+So, two simple tasks this time around:
+  - Take the kernel module you wrote for task 01, and modify it so that
+    when any USB keyboard is plugged in, the module will be
+    automatically loaded by the correct userspace hotplug tools (which
+    are implemented by depmod / kmod / udev / mdev / systemd, depending
+    on what distro you are using.)
+  - Again, provide "proof" this all works.
+
+Yes, so simple, and yet, it's a bit tricky.  As a hint, go read chapter
+14 of the book, "Linux Device Drivers, 3rd edition."  Don't worry, it's
+free, and online, no need to go buy anything.
+
+As always, please remember to use your ID, yadda yadda yadda...
+It's "5c39dda5ea83" of course.
+
+
