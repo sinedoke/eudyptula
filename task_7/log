@@ -1,0 +1,16 @@
+lolivei@lolivei-VirtualBox:~/SW$ dmesg
+[    0.000000] Linux version 4.10.0-next-20170301 (lolivei@lolivei-VirtualBox) (gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) ) #1 SMP Wed Mar 1 12:12:55 WET 2017
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+[    0.000000]   NSC Geode by NSC
+[    0.000000]   Cyrix CyrixInstead
+[    0.000000]   Centaur CentaurHauls
+[    0.000000]   Transmeta GenuineTMx86
+[    0.000000]   Transmeta TransmetaCPU
+[    0.000000]   UMC UMC UMC UMC
+[    0.000000] x86/fpu: x87 FPU will use FXSAVE
+
+lolivei@lolivei-VirtualBox:~/SW$ uname -a
+Linux lolivei-VirtualBox 4.10.0-next-20170301 #1 SMP Wed Mar 1 12:12:55 WET 2017 i686 i686 i686 GNU/Linux
+
