@@ -50,6 +50,7 @@ static const struct file_operations id_fops = {
 
 static int hello_init(void)
 {
+	unsigned long t = jiffies;
 	/*
 	 * Take the kernel module you wrote for task 01, and modify
 	 * it to create a debugfs subdirectory called "eudyptula".
@@ -62,6 +63,14 @@ static int hello_init(void)
 	 */
 	if (!debugfs_create_file("id", 0666, ret, NULL,
 		&id_fops))
+		return -ENODEV;
+
+	/*
+	 * This "jiffies" file is to be read-only by any user, and when
+	 * read,should return the current value of the jiffies kernel
+	 * timer. 444 -> read-only
+	 */
+	if (!debugfs_create_u32("jiffies", 0444, ret, (u32 *)&t))
 		return -ENODEV;
 
 	pr_debug("Hello, world\n");
