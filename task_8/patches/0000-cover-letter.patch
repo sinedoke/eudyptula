@@ -1,0 +1,29 @@
+From 6eeac976907a8a088a2d4271fccf0b029badf0c9 Mon Sep 17 00:00:00 2001
+Message-Id: <cover.1490612480.git.sinedoke@gmail.com>
+From: Luis Oliveira <lolivei@synopsys.com>
+Date: Mon, 27 Mar 2017 12:01:20 +0100
+Subject: [5c39dda5ea83] Task 08 results
+
+[49930.514722] Goodbye, cruel world
+[49941.739507] Hello, world
+
+root@lolivei-VirtualBox:/home/lolivei/SW/kernel_dev/eudyptula/tasks/task_8# cd /sys/kernel/debug/eudyptula/ root@lolivei-VirtualBox:/sys/kernel/debug/eudyptula# ls foo  id  jiffies
+
+root@lolivei-VirtualBox:/sys/kernel/debug/eudyptula# cat foo root@lolivei-VirtualBox:/sys/kernel/debug/eudyptula# echo 1 > foo root@lolivei-VirtualBox:/sys/kernel/debug/eudyptula# cat foo
+1
+
+root@lolivei-VirtualBox:/sys/kernel/debug/eudyptula# cat id 5c39dda5ea83root@lolivei-VirtualBox:/sys/kernel/debug/eudyptula# cat jiffies
+4073
+
+root@lolivei-VirtualBox:/sys/kernel/debug/eudyptula# sudo -i -u lolivei
+
+lolivei@lolivei-VirtualBox:~/SW$ sudo cat /sys/kernel/debug/eudyptula/id [sudo] password for lolivei:
+5c39dda5ea83lolivei@lolivei-VirtualBox:~/SW$ sudo cat /sys/kernel/debug/eudyptula/foo
+1
+
+lolivei@lolivei-VirtualBox:~/SW$ sudo echo > /sys/kernel/debug/eudyptula/foo
+-bash: /sys/kernel/debug/eudyptula/foo: Permission denied
+
+-- 
+2.11.0
+

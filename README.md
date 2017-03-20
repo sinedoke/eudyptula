@@ -259,3 +259,97 @@ The tasks this time are:
 
 As you will be putting your id into the kernel module, of course you
 haven't forgotten it, but just to be safe, it's "5c39dda5ea83".
+
+This is Task 07 of the Eudyptula Challenge
+------------------------------------------
+
+Great work with that misc device driver.  Isn't that a nice and simple
+way to write a character driver?
+
+Just when you think this challenge is all about writing kernel code,
+this task is a throwback to your second one.  Yes, that's right,
+building kernels.  Turns out that's what most developers end up doing:
+tons and tons of rebuilds, not writing new code.  Sad, but it is a good
+skill to know.
+
+The task this round is:
+  - Download the linux-next kernel for today.  Or tomorrow, just use
+    the latest one.  It changes every day so there is no specific one
+    you need to pick.  Build it.  Boot it.  Provide proof that you built
+    and booted it.
+
+What is the linux-next kernel?  Ah, that's part of the challenge.
+
+For a hint, you should read the excellent documentation about how the
+Linux kernel is developed in Documentation/development-process/ in the
+kernel source itself.  It's a great read, and should tell you all you
+never wanted to know about what Linux kernel developers do and how they
+do it.
+
+As always, please respond to this challenge with your id.  I know you
+know what it is.  I'll not even include it this time, I trust you.
+Don't make me feel that is a mistake.
+
+This is Task 08 of the Eudyptula Challenge
+------------------------------------------
+
+We will come back to the linux-next kernel in a later exercise, so don't
+go and delete that directory, you'll want it around.  But enough of
+building kernels, let's write more code!
+
+This task is much like the 06 task with the misc device, but this time
+we are going to focus on another user/kernel interface, debugfs.  It is
+rumored that the creator of debugfs said that there is only one rule for
+debugfs use": "There are no rules when using debugfs."  So let's take
+them up on that offer and see how to use it.
+
+debugfs should be mounted by your distro in /sys/kernel/debug/.  If it
+isn't, then you can mount it with the line:
+	mount -t debugfs none /sys/kernel/debug/
+
+Make sure it is enabled in your kernel, with the CONFIG_DEBUG_FS option,
+you will need it for this task.
+
+The tasks, in specifics are:
+
+  - Take the kernel module you wrote for task 01, and modify it to
+    create a debugfs subdirectory called "eudyptula".  In that
+    directory, create the virtual file called "id".
+  - This "id" file, operates just like it did for example 06, and uses
+    the same logic there, the file is to be readable and writable by any
+    user.
+  - Submit this task as the first email.
+  - Base your work on this submission, and create a new debugfs file
+    called "jiffies".
+  - This "jiffies" file is to be read-only by any user, and when read,
+    should return the current value of the jiffies kernel timer.
+  - Submit this result as a patch against the first email.
+  - Base your work again on that submission, and create a final debugfs
+    file called "foo".
+  - The file "foo" needs to be writable only by root, but readable by
+    anyone.  When writing to it, the value must be stored, up to one
+    page of data.  When read, which can be done by any user, the value
+    that is stored in it must be returned.  Properly handle the fact
+    that someone could be reading from the file while someone else is
+    writing to it (oh, a locking hint!)
+  - Submit this result as a patch against the second email.
+  - When the module is unloaded, all of the debugfs files are cleaned
+    up, and any memory allocated is freed, for all submissions.
+  - Provide some "proof" this all works in the first email.
+
+Again, you are using your id in the code, so you know what it is by now,
+no need to repeat it again.
+
+So, for this task, I expect to see 3 emails, all "linked" somehow, in my
+mailbox.  They should look something like this:
+
+	[5c39dda5ea83] Task 08 results
+	├─>[5c39dda5ea83] [PATCH 01/02] Task 08: add jiffies file
+	└─>[5c39dda5ea83] [PATCH 02/02] Task 08: add foo file
+
+Or, even better:
+	[5c39dda5ea83] Task 08 results
+	└─>[5c39dda5ea83] [PATCH 01/02] Task 08: add jiffies file
+	  └─>[5c39dda5ea83] [PATCH 02/02] Task 08: add foo file
+
+Hint, look at using 'git send-email' as a way to send these files out.
