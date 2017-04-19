@@ -1,0 +1,30 @@
+From b4d3c8e3b25de07e4886ad786c3cfeb9a6df4180 Mon Sep 17 00:00:00 2001
+Message-Id: <b4d3c8e3b25de07e4886ad786c3cfeb9a6df4180.1492605314.git.lolivei@synopsys.com>
+From: Luis Oliveira <lolivei@synopsys.com>
+Date: Wed, 19 Apr 2017 13:26:43 +0100
+Subject: [PATCH] staging: media: atomisp: fix misspelled word in comment
+
+This fix "overrided", the correct past tense form of "override" is
+"overridden".
+
+Signed-off-by: Luis Oliveira <lolivei@synopsys.com>
+---
+ drivers/staging/media/atomisp/i2c/ov2680.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/media/atomisp/i2c/ov2680.c b/drivers/staging/media/atomisp/i2c/ov2680.c
+index c08dd0b18fbb..566091035c64 100644
+--- a/drivers/staging/media/atomisp/i2c/ov2680.c
++++ b/drivers/staging/media/atomisp/i2c/ov2680.c
+@@ -1122,7 +1122,7 @@ static int ov2680_set_fmt(struct v4l2_subdev *sd,
+ 	}
+ 
+ 	/*recall flip functions to avoid flip registers
+-	 * were overrided by default setting
++	 * were overridden by default setting
+ 	 */
+ 	if (h_flag)
+ 		ov2680_h_flip(sd, h_flag);
+-- 
+2.11.0
+
