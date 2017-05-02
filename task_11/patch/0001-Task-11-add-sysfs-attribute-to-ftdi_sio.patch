@@ -1,0 +1,78 @@
+From bf9ba461fee05e921867173cd186c960f5eab5b1 Mon Sep 17 00:00:00 2001
+Message-Id: <bf9ba461fee05e921867173cd186c960f5eab5b1.1499072687.git.lolivei@synopsys.com>
+In-Reply-To: <cover.1499072687.git.lolivei@synopsys.com>
+References: <cover.1499072687.git.lolivei@synopsys.com>
+From: Luis Oliveira <lolivei@synopsys.com>
+Date: Tue, 27 Jun 2017 15:40:48 +0100
+Subject: [PATCH 1/1] Task 11: add sysfs attribute to ftdi_sio
+
+Eudyptula patch to add sysfs object named "id" only when chip type is
+FT2232H
+
+Signed-off-by: Luis Oliveira <lolivei@synopsys.com>
+---
+ drivers/usb/serial/ftdi_sio.c | 34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
+
+diff --git a/drivers/usb/serial/ftdi_sio.c b/drivers/usb/serial/ftdi_sio.c
+index aba74f817dc6..9f717f06c239 100644
+--- a/drivers/usb/serial/ftdi_sio.c
++++ b/drivers/usb/serial/ftdi_sio.c
+@@ -1762,6 +1762,36 @@ static ssize_t store_event_char(struct device *dev,
+ }
+ static DEVICE_ATTR(event_char, S_IWUSR, NULL, store_event_char);
+ 
++static ssize_t id_show(struct kobject *kobj, struct kobj_attribute *attr,
++			    char *buf)
++{
++	ssize_t	len;
++	char *hello_str = "5c39dda5ea83";
++
++	len = strlen(hello_str);
++	strncpy(buf, hello_str, len);
++
++	return len;
++}
++
++static ssize_t id_store(struct kobject *kobj, struct kobj_attribute *attr,
++			 const char *buf, size_t count)
++{
++	char *hello_str = "5c39dda5ea83";
++
++	if (strlen(hello_str) != count-1)
++		return -EINVAL;
++
++	if (strncmp(buf, hello_str, strlen(hello_str)) != 0)
++		return -EINVAL;
++
++	strncpy(hello_str, buf, count);
++
++	return count;
++}
++
++static DEVICE_ATTR_RW(id);
++
+ static int create_sysfs_attrs(struct usb_serial_port *port)
+ {
+ 	struct ftdi_private *priv = usb_get_serial_port_data(port);
+@@ -1783,6 +1813,8 @@ static int create_sysfs_attrs(struct usb_serial_port *port)
+ 			retval = device_create_file(&port->dev,
+ 						    &dev_attr_latency_timer);
+ 		}
++		if ((!retval) && (priv->chip_type == FT2232H))
++			device_create_file(&port->dev, &dev_attr_id);
+ 	}
+ 	return retval;
+ }
+@@ -1803,6 +1835,8 @@ static void remove_sysfs_attrs(struct usb_serial_port *port)
+ 		    priv->chip_type == FTX) {
+ 			device_remove_file(&port->dev, &dev_attr_latency_timer);
+ 		}
++		if (priv->chip_type == FT2232H)
++			device_remove_file(&port->dev, &dev_attr_id);
+ 	}
+ 
+ }
+-- 
+2.13.0
+

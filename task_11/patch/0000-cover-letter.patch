@@ -1,0 +1,31 @@
+From bf9ba461fee05e921867173cd186c960f5eab5b1 Mon Sep 17 00:00:00 2001
+Message-Id: <cover.1499072687.git.lolivei@synopsys.com>
+From: Luis Oliveira <lolivei@synopsys.com>
+Date: Mon, 3 Jul 2017 10:04:47 +0100
+Subject: [5c39dda5ea83] Task 11 results
+
+lolivei@lolivei-VirtualBox:~/SW/kernel_dev/eudyptula/tasks/task_11/linux$ cd /sys/devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.1/ttyUSB1
+lolivei@lolivei-VirtualBox:/sys/devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.1/ttyUSB1$ ls
+driver  event_char  id  latency_timer  port_number  power  subsystem  tty  uevent
+lolivei@lolivei-VirtualBox:/sys/devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.1/ttyUSB1$ cat id
+5c39dda5ea83lolivei@lolivei-VirtualBox:/sys/devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.1/ttyUSB1$ echo 1 > id
+bash: id: Permission denied
+lolivei@lolivei-VirtualBox:/sys/devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.1/ttyUSB1$ 
+lolivei@lolivei-VirtualBox:/sys/devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.1/ttyUSB1$ sudo su
+[sudo] password for lolivei: 
+root@lolivei-VirtualBox:/sys/devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.1/ttyUSB1# ls
+driver  event_char  id  latency_timer  port_number  power  subsystem  tty  uevent
+root@lolivei-VirtualBox:/sys/devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.1/ttyUSB1# echo 12345678 > id
+bash: echo: write error: Invalid argument
+root@lolivei-VirtualBox:/sys/devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.1/ttyUSB1# echo 5c39dda5ea83 > id
+lolivei@lolivei-VirtualBox:/sys/devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.1/ttyUSB1$ 
+
+Luis Oliveira (1):
+  Task 11: add sysfs attribute to ftdi_sio
+
+ drivers/usb/serial/ftdi_sio.c | 34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
+
+-- 
+2.13.0
+
